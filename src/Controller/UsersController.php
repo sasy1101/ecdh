@@ -16,7 +16,7 @@ class UsersController extends AppController
 	public function isAuthorized($user) 
 	{
 		if(in_array($this->request->getParam('action'), ['edit', 'delete'])) {
-			if($this->request->getParam('pass.0') === $user['id']) return true;
+			if($this->request->getParam('pass.0') == $user['id'] || $user['rule'] == 'admin') return true;
 			else return false;
 		}
 		return true;
