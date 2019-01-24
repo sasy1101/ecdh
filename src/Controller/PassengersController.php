@@ -15,7 +15,8 @@ class PassengersController extends AppController
 	
 	public function isAuthorized($user) 
 	{
-		if(in_array($user['rule'], ['admin', 'passenger'])) return true;
+		if(in_array($user['rule'], ['admin', 'passenger']) && in_array($this->request->getParam('action'), ['view', 'signup'])) return true;
+		elseif($user['rule'] == 'admin' && in_array($this->request->getParam('action'), ['add', 'edit', 'delete'])) return true;
 		return false;
 	}
 
