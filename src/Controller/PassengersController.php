@@ -71,7 +71,6 @@ class PassengersController extends AppController
     {
         $passenger = $this->Passengers->newEntity();
         if ($this->request->is('post')) {
-        	var_dump($this->request->getData()); exit();
             $passenger = $this->Passengers->patchEntity($passenger, $this->request->getData());
             if ($this->Passengers->save($passenger)) {
                 $this->Flash->success(__('The passenger has been saved.'));
